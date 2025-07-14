@@ -11,10 +11,11 @@ public class ProductCommandService(IProductRepository productRepository, IUnitOf
     public async Task<Product?> Handle(CreateProductCommand command)
     {
         var productExists = await productRepository.ProductExistsBySerialNumber(command.serialNumber);
+
         if (productExists)
-        {throw new Exception($"Product with serial number {command.serialNumber} already exists");}
-        // if(command.statusDescription != "OPERATIONAL" && command.statusDescription != "UNOPERATIONAL")
-        // {throw new Exception($"Invalid status description {command.statusDescription}. It should be either 'OPERATIONAL' or 'UNOPERATIONAL'.");}
+        {
+            throw new Exception($"Product with serial number {command.serialNumber} already exists");
+        }
         
         var product = new Product(command);
         await productRepository.AddAsync(product);

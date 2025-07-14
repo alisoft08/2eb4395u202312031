@@ -28,11 +28,4 @@
 
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Maintenance\Application\" />
-      <Folder Include="Maintenance\Domain\" />
-      <Folder Include="Maintenance\Infrastructure\" />
-      <Folder Include="Maintenance\Interfaces\" />
-    </ItemGroup>
-
 </Project>

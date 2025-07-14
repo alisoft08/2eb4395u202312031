@@ -12,4 +12,9 @@ public class ProductQueryService(IProductRepository productRepository) : IProduc
         
         return await productRepository.ListAsync();
     }
+
+    public async Task<Product?> Handle(GetProductBySerialNumber query)
+    {
+        return await productRepository.FindProductBySerialNumberAsync(query.serialNumber);
+    }
 }

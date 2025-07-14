@@ -20,6 +20,7 @@ public static class ProductResourceFromEntityAssembler
         
         return new ProductResource(entity.Id, entity.Brand, entity.Model, entity.SerialNumber, statusDescription);
     }
+    
     public static ProductResource ToResourceFromEntity(Product entity, string statusDescription)
     {
         

@@ -7,5 +7,6 @@ public interface IProductRepository : IBaseRepository<Product>
 {
     Task<bool> ProductExistsBySerialNumber(string serialNumber);
     
+    Task<Product?> FindProductBySerialNumberAsync(string serialNumber);
     
 }

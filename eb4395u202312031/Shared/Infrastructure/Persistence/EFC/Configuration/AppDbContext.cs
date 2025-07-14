@@ -1,5 +1,6 @@
 using eb4395u202312031.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using eb4395u202312031.Inventory.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using eb4395u202312031.Maintenance.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +23,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         base.OnModelCreating(builder);
         
         builder.ApplyProductConfiguration();
-         
+        builder.ApplyMaintenanceActivityConfiguration();
         builder.UseSnakeCaseNamingConvention();
     }
 }

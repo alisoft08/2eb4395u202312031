@@ -11,4 +11,9 @@ public class ProductRepository (AppDbContext context) : BaseRepository<Product>(
     {
         return await Context.Set<Product>().AnyAsync(product => product.SerialNumber == serialNumber);
     }
+
+    public async Task<Product?> FindProductBySerialNumberAsync(string serialNumber)
+    { 
+        return await Context.Set<Product>().FirstOrDefaultAsync(sn => sn.SerialNumber == serialNumber);
+    }
 }

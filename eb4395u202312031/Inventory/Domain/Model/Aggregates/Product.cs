@@ -11,23 +11,22 @@ public class Product
     public string SerialNumber { get; set; }
     public int Status { get; set; }
     
-    // [NotMapped]
-    // public string StatusDescription {get; set;}
-    
     [NotMapped]
-    public string StatusDescription => Status switch
-    {
-        1 => "OPERATIONAL",
-        2 => "UNOPERATIONAL",
-        _ => "UNKNOWN"
-    };
+    public string StatusDescription {get; set;}
+   
 
-
+    public Product() {}
     public Product(string brand, string model, string serialNumber, string statusDescription)
     {
         Brand = brand;
         Model = model;
         SerialNumber = serialNumber;
+        
+        
+        if (statusDescription != "OPERATIONAL" && statusDescription != "UNOPERATIONAL")
+        {
+            throw new ArgumentOutOfRangeException($"Invalid status description {statusDescription}, expected 'OPERATIONAL' or 'UNOPERATIONAL'.");
+        }
         StatusDescription = statusDescription;
         
         if (StatusDescription == "OPERATIONAL")
@@ -40,6 +39,7 @@ public class Product
         }
         
         
+        
     }
 
     public Product(CreateProductCommand command)
@@ -47,11 +47,15 @@ public class Product
         Brand =command.brand;
         Model = command.model;
         SerialNumber = command.serialNumber;
-        StatusDescription = command.statusDescription;
+        
+        
         if (command.statusDescription != "OPERATIONAL" && command.statusDescription != "UNOPERATIONAL")
         {
             throw new ArgumentOutOfRangeException($"Invalid status description {command.statusDescription}, expected 'OPERATIONAL' or 'UNOPERATIONAL'.");
         }
+        
+        StatusDescription = command.statusDescription;
+        
         if (StatusDescription == "OPERATIONAL")
         {
             Status = 1;
@@ -60,5 +64,8 @@ public class Product
         {
             Status = 2;
         }
+                
+        
+
     }
 }

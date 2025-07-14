@@ -7,4 +7,5 @@ namespace eb4395u202312031.Inventory.Domain.Services;
 public interface IProductQueryService
 {
     public Task<IEnumerable<Product>> Handle(GetAllProductsQuery query);
+    public Task<Product?> Handle(GetProductBySerialNumber query);
 }
