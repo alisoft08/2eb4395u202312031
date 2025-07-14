@@ -1,7 +1,7 @@
-# --- Platform
+# ISA Connect Platform
 
 ## Summary
---- Platform API,
+Isa Connect Platform API,
 made with Microsoft C#, ASP.NET Core, Entity Framework Core and MySQL persistence.
 It also illustrates open-api documentation configuration and integration with Swagger UI.
 
@@ -18,29 +18,26 @@ It also illustrates open-api documentation configuration and integration with Sw
 - Domain-Driven Design
 
 ## Bounded Contexts
-This version of --- is divided into two bounded contexts: ---, and ---.
+This version of Isa Connect Platform is divided into two bounded contexts: Inventory, and Maintenance.
 
-### --- Context
+### Inventory Context
 
-The ---' Context is responsible for managing the ---. It includes the following features:
+The Inventory Context is responsible for managing the products. It includes the following features:
 
--
--
--
+- Create a new product.
+- Get all products.
+- Get a product by its serial number.
 
-
-This context includes also an anti-corruption layer to communicate with the --- Context.
+This context includes also an anti-corruption layer to communicate with the Maintenance Context.
 The anti-corruption layer is responsible
-for managing the communication between the --- Context and the --- Context.
+for managing the communication between the Inventory Context and the Maintenance Context.
 It offers the following capabilities to other bounded contexts:
--
--
 
-### --- Context
+- Get a Product by Serial Number, returning the associated Product ID on success.
 
-The ---' Context is responsible for managing the ---.
+### Maintenance Context
+
+The Maintenance Context is responsible for managing the maintenance activities.
 Its features include:
 
--
--
-- 
+- Create a Maintenance Activity.
